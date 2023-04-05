@@ -18,7 +18,11 @@ if [[ $EUID -eq 0 ]]; then
 
 	cd /tmp
 	
-	curl -O https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
+	if [ ! -f /tmp/discord* ]; then
+		echo "Discord has alredy downloaded before!"
+	else
+		curl -O https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
+	fi
 	if [ ! -d $DISCORD_INSTALL_DIR/discord ]; then
 		echo "Discord directory not found! Creating one..."
 		mkdir -p $DISCORD_INSTALL_DIR
