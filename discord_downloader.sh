@@ -31,7 +31,7 @@ if [[ $EUID -eq 0 ]]; then
 	# Make a symlink to /usr/bin for user can run Discord in the terminal
 	# Because in discord.desktop the path it's different.
 	
-	ln -s $DISCORD_INSTALL_DIR/Discord/Discord /usr/bin/Discord
+	ln -s $DISCORD_INSTALL_DIR/Discord/Discord /usr/bin/discord
 
 	echo "Assign permissions to desktop file..."
 	chmod +x /usr/share/applications/discord.desktop
