@@ -16,7 +16,7 @@ if [[ $EUID -eq 0 ]]; then
 	echo "If Discord it's running ... the updater closes Discord...."
 	killall Discord
 
-	cd /tmp
+	cd /tmp || return
 	
 	if [ ! -f /tmp/discord-0.0.27.tar.gz ]; then
 		echo "Discord has alredy downloaded before!"
