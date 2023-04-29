@@ -4,7 +4,7 @@
 # by hhk02
 #
 #
-DISCORD_INSTALL_DIR="/usr/share/"
+DISCORD_INSTALL_DIR="/usr/share"
 if [[ $EUID -eq 0 ]]; then
 	echo "Welcome to the Discord Downloader/Updater the script starts now!"
 
@@ -18,10 +18,10 @@ if [[ $EUID -eq 0 ]]; then
 
 	cd /tmp
 	
-	if [ ! -f /tmp/discord* ]; then
+	if [ ! -f /tmp/discord-0.0.27.tar.gz ]; then
 		echo "Discord has alredy downloaded before!"
 	else
-		curl -O https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
+		curl -O https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.tar.gz
 	fi
 	if [ ! -d $DISCORD_INSTALL_DIR/discord ]; then
 		echo "Discord directory not found! Creating one..."
@@ -30,9 +30,9 @@ if [[ $EUID -eq 0 ]]; then
 	echo "Extracting Discord...."
 	tar xvf discord-* -C $DISCORD_INSTALL_DIR
 	echo "Copying desktop file to /usr/share/applications..."
-	cp -v $DISCORD_INSTALL_DIR/discord/discord.desktop /usr/share/applications
-	rm -rf $DISCORD_INSTALL_DIR/discord
 	mv $DISCORD_INSTALL_DIR/Discord $DISCORD_INSTALL_DIR/discord
+	cp -v $DISCORD_INSTALL_DIR/discord/discord.desktop /usr/share/applications
+	
 	# Make a symlink to /usr/bin for user can run Discord in the terminal
 	# Because in discord.desktop the path it's different.
 	
